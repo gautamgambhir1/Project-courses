@@ -1,5 +1,5 @@
 import { DataGrid } from '@material-ui/data-grid';
-import React, {useState } from 'react';
+import React, {useState,useEffect } from 'react';
 import {Button} from '@material-ui/core'
 import Cart from './Cart';
 const rows=[
@@ -20,13 +20,19 @@ const rows=[
  }
 
 export default function Loadingpage({history}) {
+    const [time,settime]=useState(45)
     const [state,setstate] = useState([])
     const [Rows,setRows] = useState(rows)
     const [message,setmessage] = useState('')
     const [flag,setflag]= useState(false)
     const [random]= useState(1)
 
-
+    useEffect(()=>{
+      time>0 && 
+       setTimeout(()=>{
+           settime(time-1)
+       },1000)
+    },[time])
 
     const columns = [
         { field: 'col1', headerName: 'Subject', width: 150 },
@@ -62,6 +68,7 @@ export default function Loadingpage({history}) {
       ];
   return (
     <div style={{ height: 600, width: '80%',marginLeft:"50px" }}>
+      <h3>Time-Left: {time}</h3>
         <h3 style={{textAlign:"center",fontFamily:"cursive",color:"red",fontWeight:"bolder"}}>{message}</h3>
         <h2 style={{float:'right',fontFamily:"sans-serif"}}>Free-Seats-Left: {random*rows.length}</h2>
         <div style={{float:"right"}}>  

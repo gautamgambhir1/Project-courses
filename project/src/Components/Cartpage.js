@@ -31,6 +31,7 @@ export default function Cartpage(){
 
 
     return (<div style={{ height: 1000, width: '70%' }}>
-      <DataGrid rows= {rows} columns = {columns}/>
+      <h1 style = {{textAlign:"center",fontFamily:"cursive"}}>Your-cart</h1>
+      <DataGrid style={{color:"darkblue",fontFamily:"serif",fontSize:"1rem"}} rows= {rows} columns = {columns}/>
     </div>)
 }
